@@ -1,0 +1,52 @@
+/*#EmployeeDiv {
+	width: 100%;
+}*/
+
+/*.word-wrap-class {
+	max-width: 150px;
+	word-wrap: break-word;
+	overflow: hidden;
+}*/
+
+.Delete_icon {
+	width: 17px;
+	height: 17px;
+	background-image: url(../images/delete_item.png);
+}
+
+.Delete_icon:hover {
+	background-image: url(../images/delete_item_hover.png);
+}
+
+.ButtonPanel {
+	height: 50px;
+	text-align: center;
+	padding-top: 10px;
+}
+
+.Button_OpenNew {
+	width: 50%;
+}
+
+#tooltip {
+	padding: 3px;
+	background: #f9f9f9;
+	border: 1px solid #eee;
+	text-align: center;
+	font-size: smaller;     
+}
+
+.ui-autocomplete-input { margin: 0; padding: 0.48em 0 0.47em 0.45em; }
+
+/*
+
+div.dataTables_scrollHead {
+	overflow: hidden;
+	position: relative;
+}
+
+div.dataTables_scroll { clear: both; }
+
+*/
+
+

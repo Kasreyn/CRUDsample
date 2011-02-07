@@ -1,0 +1,221 @@
+/*function colorToHex(color) {
+    if (color === undefined || color === "" || color.substr(0, 1) === '#') {
+        return color;
+    }
+    var digits = /(.*?)rgb\((\d+), (\d+), (\d+)\)/.exec(color);
+    var red = parseInt(digits[2]);
+    var green = parseInt(digits[3]);
+    var blue = parseInt(digits[4]);
+    var rgb = blue | (green << 8) | (red << 16);
+    return digits[1] + '#' + rgb.toString(16);
+};
+
+
+function shadeit(input) {
+    var rrgb = /rgb(?:a)?\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*(?:,\s*(0*\.?\d+)\s*)?\)/;
+    var result;
+    if (result = rrgb.exec(input)) {
+        var color = {
+            r: parseInt(result[1], 10),
+            g: parseInt(result[2], 10),
+            b: parseInt(result[3], 10),
+            alpha: parseFloat(result[4], 10)
+        };
+        var rgb = new RGBColour(color.r,color.g,color.b);
+        var hsl = rgb.getHSL();
+        //hsl.l = hsl.l / 3;
+        var new_hsl = new HSLColour(hsl.h,hsl.s,hsl.l);
+        var new_rgb = new_hsl.getIntegerRGB();
+        var ret = "rgb("+new_rgb.r+", "+new_rgb.g+", "+new_rgb.b+")";
+        ret = colorToHex(ret);
+        return ret;
+    }
+}*/
+
+
+/*$("tr:odd").addClass("ui-widget-content");
+    $("tr:even").addClass("ui-state-default");
+    $("tr:even").attr("style", "font-weight: normal !important");*/
+
+
+function bind_jQuery_jEditable(element, datatable, target, field_type) {
+    $(element, datatable.fnGetNodes()).editable(target, {
+    //$("td[id^='Name_']").live("click", function(event) { alert("test"); }); /*.editable(target, {
+    //$('td', datatable.fnGetNodes()).editable(target, {
+        "callback": function( sValue, y ) {
+            var myObject = eval('(' + sValue + ')');
+            var aPos = datatable.fnGetPosition( this );
+            datatable.fnUpdate( myObject.d, aPos[0], aPos[1] );
+        },
+        "submitdata": function ( value, settings, newvalue ) {
+            //alert(newvalue + ":" + this.getAttribute('id') + ":" + datatable.fnGetPosition(this)[2]);
+            var data = {
+                "ID": this.getAttribute('id'),
+                "NewValue": newvalue
+            };
+            var datastring = JSON.stringify(data);
+            return { data: datastring };
+        },
+        "height": "22px",
+        //name : 'NewValue'
+        placeholder: ''
+    });
+}
+
+
+/* This function returns a formatted DateTime string.  */
+Date.prototype.defaultView = function() {
+    var dd = this.getDate();
+    if (dd < 10) dd = '0' + dd;
+    var mm = this.getMonth() + 1;
+    if (mm < 10) mm = '0' + mm;
+    var yyyy = this.getFullYear();
+    var HH = this.getHours();
+    if (HH < 10) HH = '0' + HH;
+    var MM = this.getMinutes();
+    if (MM < 10) MM = '0' + MM;
+    var ss = this.getSeconds();
+    if (ss < 10) ss = '0' + ss;
+    return String(yyyy + "-" + mm + "-" + dd + " " + HH + ":" + MM + ":" + ss);
+}
+
+
+
+function UpdateCSS() {
+    /*$(document.styleSheets[0].cssRules[2].styleSheet.cssRules).each(function test(index) {
+        var regex = /^\.ui-widget-header.*background\:\ (.*)\ url/;
+        var match = this.cssText.match(regex);
+        if (match != null) {
+            $("tr.odd").css("background-color", colorToHex(match[1]));
+        }
+        var regex2 = /^\.ui-widget-content.*background\:\ (.*)\ url/;
+        match = this.cssText.match(regex2);
+        if (match != null) {
+            $("tr.even").css("background-color", colorToHex(match[1]));
+        }
+        //$("tr.even").css("background-color", "#BBCCCC");
+    });*/
+
+    $("tr.odd").addClass("ui-widget-content");
+    /*var test = $("tr.odd").css("background-color");
+    var test2 = colorToHex(test);*/
+    //$("tr.even").css("background-color", shadeit(test));
+    $("tr.even").addClass("ui-state-default");
+    $("tr.even").attr("style", "font-weight: normal !important");
+
+}
+
+
+
+function hsl_to_rgb(h, s, l, a) {
+    var r, g, b, m1, m2;
+
+    if (s === 0) {
+        r = g = b = l;
+    }
+    else {
+        if (l <= 0.5) {
+            m2 = l * (s + 1);
+        }
+        else {   
+            m2 = (l + s) - (l * s);
+        }
+        m1 = (l * 2) - m2;
+        r = parseInt(255 * hue_to_rgb(m1, m2, h + (1/3)), 10);
+        g = parseInt(255 * hue_to_rgb(m1, m2, h), 10);
+        b = parseInt(255 * hue_to_rgb(m1, m2, h - (1/3)), 10);
+    }
+    //return { r:r, g:g, b:b, alpha:a };
+    return "rgb("+r+","+g+","+b+")";
+}
+
+function hue_to_rgb(m1, m2, h) {
+    if (h < 0) { h++; }
+    if (h > 1) { h--; }
+    if ((h * 6) < 1) { return m1 + ((m2 - m1) * h * 6); }
+    else if ((h * 2) < 1) { return m2; }
+    else if ((h * 3) < 2) { return m1 + ((m2 - m1) * ((2/3) - h) * 6); }
+    else { return m1; }
+}
+
+
+
+/*var test = $(".ui-state-default").css("color");
+    var test2 = $(".ui-widget-content").css("background");*/
+    //$(".dataTables_scrollBody tr.odd").css("background-color", "#cccccc");
+    //$(".dataTables_scrollBody tr.odd").css("background-color", test);
+    //$(".dataTables_scrollBody tr.even").css("background-color", test2);
+
+
+   /*(function($) {
+    $.cssHooks['background' + 1 ] = {
+        get: function( elem, computed, extra ) {
+            // Handle getting the css property here
+            var test = $.css(elem,'background');
+
+            //alert(test);
+            return "#AAAAAA";
+        },
+        set: function( elem, value ) {
+            // Handle setting the css value here
+        }
+    };
+})(jQuery);*/
+   
+   /*if (this.cssText.indexOf(".ui-widget-header") == 0) {
+            var regex = /\.ui-widget-header.*background\:\ (.*)\ url/;
+            var hex = colorToHex(this.cssText.match(regex)[1]);
+            //$(".dataTables_scrollBody tr.even").css("background-color", rrgb.exec(this.cssText.match(regex)[1]));
+            $(".dataTables_scrollBody tr.odd").css("background-color", hex);
+        }*/
+        /*else if (this.cssText.indexOf(".ui-widget-content") == 0) {
+            var regex = /\.ui-widget-content.*background\:\ (.*)\ url/;
+            var test = this.cssText.match(regex)[1];
+            var hex = colorToHex(test);
+            //$(".dataTables_scrollBody tr.even").css("background-color", rrgb.exec(this.cssText.match(regex)[1]));
+            $(".dataTables_scrollBody tr.even").css("background-color", hex);
+        }*/
+
+
+/*if($stmt = $this->mysqli->prepare("CALL AssignEmployeeCustomerToComputer(@ret,?,?);")) {
+                    $stmt->bind_param("ii", $id, $postdata['NewValue']);
+                    $stmt->execute();
+                    //$stmt->bind_result($result);
+                    //$stmt->fetch();
+                    if ($this->mysqli->errno == 0) {
+                        $ret['d'] = $postdata['NewValue'];
+                    }
+                }*/
+
+	
+	<?php
+    $mysqli = new mysqli("retcorr.dyndns.org", "web", "zzVZ4J8aAxJ8dUS", "RetCorrLinux");
+    if (mysqli_connect_errno()) {
+        printf("Connect failed: %s\n", mysqli_connect_error());
+        exit();
+    }
+
+
+    $mysqli->multi_query("CALL AddEmployee(@ret1,@ret2,'test',0,0); SELECT @ret1,@ret2;");
+    $mysqli->next_result();
+    $result = $mysqli->store_result();
+    $row = $result->fetch_row();
+    echo $row[0] . ":" . $row[1];
+
+
+    $mysqli->close();
+?>
+
+	
+	/*var oTicketSettings = SiteDataTable.fnSettings();         //dataTable function to retain class values
+    oTicketSettings.aoColumns[1].sClass = "editInPlace_Site";
+    oTicketSettings.aoColumns[2].sClass = "editInPlace_Site";
+    oTicketSettings.aoColumns[3].sClass = "editInPlace_Site";
+    oTicketSettings.aoColumns[4].sClass = "editInPlace_Site";
+    oTicketSettings.aoColumns[5].sClass = "editInPlace_Site";
+    oTicketSettings.aoColumns[6].sClass = "editInPlace_Site";*/
+
+    /*
+    bind_jQuery_editInPlace(EmployeeDataTable, ".editInPlace_editable_owner_dropdown", "ajax_functions/WebService1.php/UpdateTicket", "select", owner_select_options);
+    */
+

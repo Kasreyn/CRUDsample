@@ -1,0 +1,170 @@
+contenteditable='true' is interesting, this way html can become editable without javascript, jQuery plugin? (https://developer.mozilla.org/en/DOM/element.contentEditable)
+
+Things needed to be done in the plugin: 
+* Save/Cancel button
+* Dropdown with <select>
+* Change color on hover
+
+<Cork> Kasreyn: $(element).bind($.browser.opera ? 'keypress' : 'keydown', function(event) { if(event.keyCode == $.ui.keyCode.ENTER) { <submit> } });
+
+Links:
+
+php check if connected to mysql
+http://www.webmasterworld.com/databases_sql_mysql/3164985.htm
+
+jquery append head css IE
+http://forum.jquery.com/topic/problem-with-inserting-link-into-head-in-ie-with-1-4
+
+sed replace text in all files
+http://forums.devshed.com/unix-help-35/unix-find-and-replace-text-within-all-files-within-a-146179.html
+
+jqueryui themeroller source code
+http://blog.jqueryui.com/2010/02/jquery-ui-download-builderthemeroller-status/
+
+jQuery UI icons
+http://www.radupoenaru.com/how-to-add-ui-icons-to-jquery-tabs/
+
+secure php login
+http://www.daniweb.com/forums/thread288089.html
+
+php login
+http://www.devshed.com/c/a/PHP/Creating-a-Secure-PHP-Login-Script/1/
+
+html formatter
+http://infohound.net/tidy/
+
+http://jsfiddle.net
+
+Array.prototype.slice.call
+http://www.exforsys.com/tutorials/javascript/javascript-array-object-methods-part-2.html
+http://debuggable.com/posts/turning-javascripts-arguments-object-into-an-array:4ac50ef8-3bd0-4a2d-8c2e-535ccbdd56cb
+
+Array.prototype.splice.call
+http://stackoverflow.com/questions/499814/recursively-concatenating-a-javascript-functions-arguments
+
+$stmt->bind_param null
+http://stackoverflow.com/questions/4059513/php-mysqli-stmt-prepare
+
+php regex dot doesn't match underscore?
+http://www.noupe.com/php/php-regular-expressions.html
+
+javascript function default null
+http://parentnode.org/javascript/default-arguments-in-javascript-functions/
+
+http://code.cside.com/3rdpage/us/newLine.html
+
+firebug light set breakpoints chrome
+http://stackoverflow.com/questions/1739221/what-is-a-good-javascript-debugging-tool
+
+jQuery $(function wiki document ready
+http://stackoverflow.com/questions/1158953/four-variations-of-jquery-ready-whats-the-difference
+
+php replace &
+http://php.net/manual/en/function.htmlspecialchars.php
+
+good colors for highlight html
+http://jan.moesen.nu/code/html-css/google-highlighting/
+
+Conditional-CSS color calculations
+http://robertnyman.com/2010/01/11/css-background-transparency-without-affecting-child-elements-through-rgba-and-filters/
+
+jQuery get background color
+http://stackoverflow.com/questions/638948/background-color-hex-to-javascript-variable-jquery
+
+css tr.odd ui-widget-content
+http://stackoverflow.com/questions/2709148/is-it-possible-to-override-a-css-class
+http://stackoverflow.com/questions/2655925/jquery-css-applying-important-styles
+
+javascript rgb to hex
+http://haacked.com/archive/2009/12/29/convert-rgb-to-hex.aspx
+
+javascript parse css
+http://stackoverflow.com/questions/385098/how-do-i-parse-import-stylesheets-with-javascript
+
+http://datatables.net/api#fnAdjustColumnSizing
+
+dataTables  jQuery UI Tabs sScrollXInner
+http://datatables.net/forums/comments.php?DiscussionID=2343
+
+datatables height
+http://datatables.net/forums/comments.php?DiscussionID=1065
+
+center button jQuery
+http://www.mail-archive.com/jquery-en@googlegroups.com/msg91970.html
+
+parseTheme.css.php
+http://forum.jquery.com/topic/themeroller-php-scripts-source
+
+Theme Switcher Widget not working
+http://forum.jquery.com/topic/urgent-themeswitcher-tool-not-working
+http://forum.jquery.com/topic/pb-with-theme-switcher-widget-in-production
+http://flowplayer.org/tools/demos/index.html
+
+dataTables autowidth
+http://stackoverflow.com/questions/604933/jquery-datatables-table-width-problem
+http://datatables.net/forums/comments.php?DiscussionID=23&page=1
+
+dataTables_scrollHead
+http://datatables.net/forums/comments.php?DiscussionID=2765&page=1
+
+server side notifications php
+http://www.ibm.com/developerworks/xml/tutorials/x-realtimeXMPPtut/section5.html
+
+javascript hash table push
+http://stackoverflow.com/questions/890807/iterate-over-a-javascript-associative-array-in-sorted-order
+http://stackoverflow.com/questions/172524/populate-a-form-with-data-from-an-associative-array-with-jquery
+http://stackoverflow.com/questions/134656/where-can-i-find-a-perl-module-for-converting-a-perl-data-structure-into-a-javasc
+
+javascript hash table push
+http://andrewdupont.net/2006/05/18/javascript-associative-arrays-considered-harmful/
+
+prepared statements php
+http://mattbango.com/notebook/web-development/prepared-statements-in-php-and-mysqli/
+
+selector expression
+http://api.jquery.com/attribute-starts-with-selector/
+
+html hide
+http://www.victorchen.info/how-to-hideshow-html-elements/
+
+jQuery UI autocomplete scrollbar
+http://forum.jquery.com/topic/autocomplete-with-vertical-scrollbar
+
+jQuery select get text
+http://stackoverflow.com/questions/196684/jquery-get-select-option-text
+
+http://www.php.net/manual/en/function.mysql-real-escape-string.php
+
+jQuery option selected
+http://api.jquery.com/selected-selector/
+
+jQuery append one select into another
+http://forum.jquery.com/topic/copying-options-of-select-into-another-select
+
+html color 
+http://html-color-codes.com/
+
+jQuery searchable dropdown
+http://forum.jquery.com/topic/searchable-dropdown-that-shows-all-the-elements-if-no-string-is-entered
+http://bassistance.de/jquery-plugins/jquery-plugin-autocomplete/
+http://www.learningjquery.com/2010/06/autocomplete-migration-guide
+http://jqueryui.com/demos/autocomplete/#combobox
+
+http://www.erichynds.com/jquery/jquery-ui-multiselect-widget/
+
+jquery datepicker format
+http://stackoverflow.com/questions/2486854/jquery-datepicker-format-problem
+
+jquery UI dialog pass value
+http://stackoverflow.com/questions/394491/passing-data-to-a-jquery-ui-dialog
+
+javascript change image on hover jquery
+http://stackoverflow.com/questions/540349/change-image-source-using-jquery
+
+jquery ui theme switcher
+http://jqueryui.com/docs/Theming/ThemeSwitcher
+http://jqueryui.com/themeroller/
+
+trashcan icon
+https://wiki.rallydev.com/display/rlyhlp/Row+Action+Icons
+
